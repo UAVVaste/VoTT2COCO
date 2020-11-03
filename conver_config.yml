@@ -1,0 +1,16 @@
+dataset:
+  source:
+    path: '/home/bartosz/UAVVaste_vott/'
+    img_cat: images
+    anno_cat: annotations
+  destination:
+    path: '/home/bartosz/UAVVaste_coco/'
+    img_cat: images
+    anno_file: annotations.json
+
+info:
+  year: 2020 
+  version: v1 
+  description: UAVVaste dataset 
+  contributor: None
+  url: https://uavvaste.ithub.io/
