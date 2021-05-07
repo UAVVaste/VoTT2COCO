@@ -29,16 +29,16 @@ class COCOSaver:
         directory = self.config['dataset']['destination']['path']
         key = self.config['dataset']['destination']['img_cat']
 
-        img_path = Path(f'{directory}{key}')
+        img_path = Path(directory) / key
         img_path.mkdir(parents=True, exist_ok=True)
 
         for item in tqdm(self.reader.items):
             self.coco['images'].append(self.__create_image(item.index, item.width, item.height, item.name))
-            copyfile(item.image_path, f'{str(img_path)}/{item.name}')
+            copyfile(item.image_path, str(img_path / item.name))
 
             self.coco['annotations'] += self.__create_annotations(item.index, item.bbox, item.masks, item.areas, item.categories)
 
-        json.dump(self.coco, open(directory+self.config['dataset']['destination']['anno_file'], 'w'))
+        json.dump(self.coco, open(Path(directory) / self.config['dataset']['destination']['anno_file'], 'w'))
 
 
     def __create_info(self):

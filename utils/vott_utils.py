@@ -1,8 +1,9 @@
 import json
+from pathlib import Path
+
 from tqdm import tqdm
 import cv2
 import numpy as np
-import os
 from glob import glob
 
 class VOTItem:
@@ -19,6 +20,9 @@ class VOTItem:
 
         self.image_path = path.split('annotations')[0] + \
             f'{img_dir}/{self.name}'
+        if path.split('annotations')[0] == path:
+            # this is the situation when there is everything in one folder (VoTT v2.2.0)
+            self.image_path = str(Path(path).parent / img_dir / self.name)
 
     def __read_bboxes(self):
         bboxes_list = []
