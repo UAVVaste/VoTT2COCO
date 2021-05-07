@@ -1,16 +1,16 @@
 dataset:
   source:
-    path: '/home/bartosz/UAVVaste_vott/'
-    img_cat: images
-    anno_cat: annotations
+    path: 'artifacts'  # where your VoTT project lives
+    img_cat: ''
+    anno_cat: ''
   destination:
-    path: '/home/bartosz/UAVVaste_coco/'
+    path: 'dest'  # where you want to store new COCO dataset
     img_cat: images
     anno_file: annotations.json
 
 info:
-  year: 2020 
+  year: 2021
   version: v1 
-  description: UAVVaste dataset 
+  description: COCO dataset generated from VoTT dataset
   contributor: None
-  url: https://uavvaste.ithub.io/
+  url: https://github.com/demid5111/VoTT2COCO
